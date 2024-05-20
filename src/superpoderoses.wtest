@@ -8,26 +8,26 @@ describe "Superpoderoses" {
 	 * se debe remover la declaración de la variable y la línea en que se sugiere la instanciación.
 	 */
 
-	const altaVelocidad
-	const superVelocidad
-	const vueloRasante
-	const vueloAlto
-	const vueloRasanteAmplificado
-	const superVelocidadAmplificada
+	var altaVelocidad
+	var superVelocidad
+	var vueloRasante
+	var vueloAlto
+	var vueloRasanteAmplificado
+	var superVelocidadAmplificada
 	
-	const capitanaPatriaGrande
-	const plusvaliaCero
-	const usinaDeDerechos
+	var capitanaPatriaGrande
+	var plusvaliaCero
+	var usinaDeDerechos
 	
-	const cooperativaJusticiera
+	var cooperativaJusticiera
 	
-	const peligroSencillo
-	const peligroSencilloRadiactivo 
-	const peligroModerado
-	const peligroAlto
+	var peligroSencillo
+	var peligroSencilloRadiactivo 
+	var peligroModerado
+	var peligroAlto
 	
-	const fragmentadorMonopolios
-	const educadorPublico
+	var fragmentadorMonopolios
+	var educadorPublico
 		
 	
 	method initialize(){
@@ -36,39 +36,35 @@ describe "Superpoderoses" {
 		
 		// Punto 1
 		// Poderes
-		altaVelocidad = null // TODO: constrir/obtener un poder de velocidad con rapidez = 2
-		superVelocidad = null // TODO: constrir/obtener un poder de velocidad con rapidez = 3
-		vueloRasante = null // TODO: constrir/obtener un poder de vuelo con altura maxima = 10 y energia para despegue = 10
-		vueloAlto = null // TODO: constrir/obtener un poder de vuelo con altura maxima = 300 y energia para despegue = 200
-		vueloRasanteAmplificado = null // TODO: constrir/obtener un poder amplificador con poder base = vueloRasante y amplificador = 4
-		superVelocidadAmplificada = null // TODO: constrir/obtener un poder amplificador con poder base = superVelocidad y amplificador = 3
+		altaVelocidad = new Velocidad(rapidez = 2)
+		superVelocidad = new Velocidad(rapidez = 3)
+		vueloRasante = new Vuelo(alturaMax = 10, energiaDespegue = 10)
+		vueloAlto = new Vuelo(alturaMax = 300, energiaDespegue = 200)
+		vueloRasanteAmplificado = new Amplificador(poderBase = vueloRasante, numAmplificador = 4)
+		superVelocidadAmplificada = new Amplificador(poderBase = superVelocidad, numAmplificador = 3)
 	
 		// Personajes 
-		capitanaPatriaGrande = null // TODO: constrir/obtener un personaje con estrategia = 3, espiritualidad = 5 y poderes = superVelocidadAmplificada y vueloAlto
-		plusvaliaCero = null // TODO: constrir/obtener un personaje con estrategia = 2, espiritualidad = 4 y poderes = altaVelocidad y vueloRasanteAmplificado
-		usinaDeDerechos = null // TODO: constrir/obtener un personaje con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
+		capitanaPatriaGrande = new Personaje(estrategia = 3, espiritualidad = 5, poderes = #{superVelocidadAmplificada, vueloAlto})
+		plusvaliaCero = new Personaje(estrategia = 2, espiritualidad = 4, poderes = #{altaVelocidad, vueloRasante})
+		usinaDeDerechos = new Personaje(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
 		
 		// Punto 2
 		// Equipo 
-		cooperativaJusticiera = null // TODO: constrir/obtener un conformado por capitanaPatriaGrande, plusvaliaCero y usinaDeDerechos
+		cooperativaJusticiera = new Equipo(integrantes = #{capitanaPatriaGrande, plusvaliaCero, usinaDeDerechos})
 		
 		// Punto 3 
 		// Peligros
-		peligroSencillo = null // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y NO tiene desechos radiactivos  
-		peligroSencilloRadiactivo = null // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y tiene desechos radiactivos
-		peligroModerado = null // TODO: constrir/obtener un peligro con capacidad de batalla = 50 y NO tiene desechos radiactivos
-		peligroAlto = null // TODO: constrir/obtener un peligro con capacidad de batalla = 400 y tiene desechos radiactivos
+		peligroSencillo = new Peligro(capBatalla = 30, esRadioactivo = false, complejidad = 1, maxPersonajes = 2)
+		peligroSencilloRadiactivo = new Peligro(capBatalla = 30, esRadioactivo = true, complejidad = 1, maxPersonajes = 2)
+		peligroModerado = new Peligro(capBatalla = 50, esRadioactivo = false, complejidad = 2, maxPersonajes = 1)
+		peligroAlto = new Peligro(capBatalla = 400, esRadioactivo = true, complejidad = 3, maxPersonajes = 2)
 
         // Punto 4
-        // TODO: agregar al peligroSencillo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
-        // TODO: agregar al peligroSencilloRadiactivo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
-        // TODO: agregar al peligroModerado nivel de complejidad = 2 y cantidad de personajes que se banca en simultaneo = 1
-        // TODO: agregar al peligroAlto nivel de complejidad = 3 y cantidad de personajes que se banca en simultaneo = 2
-        
+        // lease punto 3
 
 		// Punto 5 
-		fragmentadorMonopolios = null // TODO: constrir/obtener un Metahumano con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
-		educadorPublico = null // TODO: constrir/obtener un Mago con poder acumulado = 12, estrategia = 1, espiritualidad = 6 y poderes = vueloRasante	
+		fragmentadorMonopolios = new Metahumano(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
+		educadorPublico = new Mago(poderAcumulado = 12, estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
 }
 
 
