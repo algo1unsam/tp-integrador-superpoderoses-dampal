@@ -7,206 +7,141 @@ describe "Superpoderoses" {
 	 * Si el diseño de la solución utiliza objetos bien conocidos en algunos casos entonces 
 	 * se debe remover la declaración de la variable y la línea en que se sugiere la instanciación.
 	 */
-
-	var altaVelocidad
-	var superVelocidad
-	var vueloRasante
-	var vueloAlto
-	var vueloRasanteAmplificado
-	var superVelocidadAmplificada
 	
-	var capitanaPatriaGrande
-	var plusvaliaCero
-	var usinaDeDerechos
-	
-	var cooperativaJusticiera
-	
-	var peligroSencillo
-	var peligroSencilloRadiactivo 
-	var peligroModerado
-	var peligroAlto
-	
-	var fragmentadorMonopolios
-	var educadorPublico
-		
-	
-	method initialize(){
 		
 		//aca pueden inicializar todo lo que quieran dentro de este describe "Superpoderoses", cada describe puede tener hasta 1 initilize
 		
 		// Punto 1
 		// Poderes
-		altaVelocidad = new Velocidad(rapidez = 2)
-		superVelocidad = new Velocidad(rapidez = 3)
-		vueloRasante = new Vuelo(alturaMax = 10, energiaDespegue = 10)
-		vueloAlto = new Vuelo(alturaMax = 300, energiaDespegue = 200)
-		vueloRasanteAmplificado = new Amplificador(poderBase = vueloRasante, numAmplificador = 4)
-		superVelocidadAmplificada = new Amplificador(poderBase = superVelocidad, numAmplificador = 3)
+		const altaVelocidad = new Velocidad(rapidez = 2)
+		const superVelocidad = new Velocidad(rapidez = 3)
+		const vueloRasante = new Vuelo(alturaMax = 10, energiaDespegue = 10)
+		const vueloAlto = new Vuelo(alturaMax = 300, energiaDespegue = 200)
+		const vueloRasanteAmplificado = new Amplificador(poderBase = vueloRasante, numAmplificador = 4)
+		const superVelocidadAmplificada = new Amplificador(poderBase = superVelocidad, numAmplificador = 3)
 	
 		// Personajes 
-		capitanaPatriaGrande = new Personaje(estrategia = 3, espiritualidad = 5, poderes = #{superVelocidadAmplificada, vueloAlto})
-		plusvaliaCero = new Personaje(estrategia = 2, espiritualidad = 4, poderes = #{altaVelocidad, vueloRasante})
-		usinaDeDerechos = new Personaje(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
+		const capitanaPatriaGrande = new Personaje(estrategia = 3, espiritualidad = 5, poderes = #{superVelocidadAmplificada, vueloAlto})
+		const plusvaliaCero = new Personaje(estrategia = 2, espiritualidad = 4, poderes = #{altaVelocidad, vueloRasanteAmplificado})
+		const usinaDeDerechos = new Personaje(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
 		
 		// Punto 2
 		// Equipo 
-		cooperativaJusticiera = new Equipo(integrantes = #{capitanaPatriaGrande, plusvaliaCero, usinaDeDerechos})
+		const cooperativaJusticiera = new Equipo(integrantes = #{capitanaPatriaGrande, plusvaliaCero, usinaDeDerechos})
 		
 		// Punto 3 
 		// Peligros
-		peligroSencillo = new Peligro(capBatalla = 30, esRadioactivo = false, complejidad = 1, maxPersonajes = 2)
-		peligroSencilloRadiactivo = new Peligro(capBatalla = 30, esRadioactivo = true, complejidad = 1, maxPersonajes = 2)
-		peligroModerado = new Peligro(capBatalla = 50, esRadioactivo = false, complejidad = 2, maxPersonajes = 1)
-		peligroAlto = new Peligro(capBatalla = 400, esRadioactivo = true, complejidad = 3, maxPersonajes = 2)
+		const peligroSencillo = new Peligro(capBatalla = 30, esRadioactivo = false, complejidad = 1, maxPersonajes = 2)
+		const peligroSencilloRadiactivo = new Peligro(capBatalla = 30, esRadioactivo = true, complejidad = 1, maxPersonajes = 2)
+		const peligroModerado = new Peligro(capBatalla = 50, esRadioactivo = false, complejidad = 2, maxPersonajes = 1)
+		const peligroAlto = new Peligro(capBatalla = 400, esRadioactivo = true, complejidad = 3, maxPersonajes = 2)
 
         // Punto 4
         // lease punto 3
 
 		// Punto 5 
-		fragmentadorMonopolios = new Metahumano(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
-		educadorPublico = new Mago(poderAcumulado = 12, estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
-}
-
-
-	
-	
-	/* ACLARACIÓN
-	 * Los tests están comentados para evitar errores y warnings, así poder ir incorporándolos 
-	 * a medida que se avanza con la solución del ejercicio
-	 */
-	
-/*
-	test "punto 1.1 capacidad de batalla que aporta un poder" {
-		// TODO: Verificar que la capacidad de batalla que le aporta superVelocidadAmplificada a capitanaPatriaGrande es 576
-		// TODO: Verificar que la capacidad de batalla que le aporta vueloAlto a capitanaPatriaGrande es 876
-		// TODO: Verificar que la capacidad de batalla que le aporta altaVelocidad a plusvaliaCero es 72
-		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasanteAmplificado a plusvaliaCero es 144
-		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasante a usinaDeDerechos es 49
-	}
- */	
-
-/*
-	test "punto 1.2 capacidad de batalla de un personaje" {
-		// TODO: Verificar que la capacidad de batalla de capitanaPatriaGrande es 1452
-		// TODO: Verificar que la capacidad de batalla de plusvaliaCero es 216
-		// TODO: Verificar que la capacidad de batalla de usinaDeDerechos es 49
-	}
- */	
-
-/*
-	test "punto 2.1 Saber el miembro vulnerable de un equipo" {
-		// TODO: Verificar que miembro mas vulnerable de cooperativaJusticiera es usinaDeDerechos
-	}
- */	
-
-/*
-	test "punto 2.2 Saber la calidad de un equipo" {
-		// TODO: Verificar que la calidad de cooperativaJusticiera es 572.33333
-	}
- */	
-
-/*
-	test "punto 2.3 Saber los mejores poderes de un equipo" {
-		// TODO: Verificar que los mejores poderes de cooperativaJusticiera son vueloAlto, vueloRasanteAmplificado y vueloRasante
-	}
- */	
-	
-/*
-	test "punto 3.1 personajes contra el peligro" {
-		// TODO: Verificar que peligroSencillo puede ser afrontado por capitanaPatriaGrande
-		// TODO: Verificar que peligroSencillo puede ser afrontado por plusvaliaCero
-		// TODO: Verificar que peligroSencillo puede ser afrontado por usinaDeDerechos
-
-		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por capitanaPatriaGrande
-		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por plusvaliaCero
-		// TODO: Verificar que peligroSencilloRadiactivo NO puede ser afrontado por usinaDeDerechos
-
-		// TODO: Verificar que peligroModerado puede ser afrontado por capitanaPatriaGrande
-		// TODO: Verificar que peligroModerado puede ser afrontado por plusvaliaCero
-		// TODO: Verificar que peligroModerado NO puede ser afrontado por usinaDeDerechos
-	
-		// TODO: Verificar que peligroAlto puede ser afrontado por capitanaPatriaGrande
-		// TODO: Verificar que peligroAlto NO puede ser afrontado por plusvaliaCero
-		// TODO: Verificar que peligroAlto NO puede ser afrontado por usinaDeDerechos
-	}
- */	
-	
-/*
-	test "punto 3.2 Saber si un peligro es sensato " {
-		// TODO: Verificar que peligroSencillo es sensato para cooperativaJusticiera
-		// TODO: Verificar que peligroSencilloRadiactivo NO es sensato para cooperativaJusticiera
-		// TODO: Verificar que peligroModerado NO es sensato para cooperativaJusticiera
-		// TODO: Verificar que peligroAlto NO es sensato para cooperativaJusticiera
-	}
- */	
-	
-/*
-	test "punto 4.1 Afrontar peligro individualmente: OK" {
-		// TODO: Hacer que usinaDeDerechos afronte a peligroSencillo 
-		// TODO: Verificar que la estrategia de usinaDeDerechos es 2
-	}
- */
-
-/*
-	test "punto 4.1 Afrontar peligro individualmente: no OK por radioactividad" {
-		// TODO: Hacer que usinaDeDerechos afronte a peligroSencilloRadiactivo (NO SE PUEDE!)
-		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
-	}
- */
-	
-/*
-	test "punto 4.1 Afrontar peligro individualmente: no OK por capacidad de batalla" {
-		// TODO: Hacer que usinaDeDerechos afronte a peligroModerado (NO SE PUEDE!)
-		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
-	}
- */
-	
-/*
-	test "punto 4.2  Afrontar peligro (moderado) en equipo  " {
-		// TODO: Hacer que cooperativaJusticiera afronte a peligroModerado
-		// TODO: Verificar que la estrategia de capitanaPatriaGrande es 5
-		// TODO: Verificar que la estrategia de plusvaliaCero es 4
-		// TODO: Verificar que la estrategia de usinaDeDerechos es 1		
-	}
- */
-
-/*
-	test "punto 4.2  Afrontar peligro (alto) en equipo (no ok)" {
-		// TODO: Hacer que cooperativaJusticiera afronte a peligroAlto (NO SE PUEDE!)
-		// TODO: Verificar que la estrategia de capitanaPatriaGrande es 3
-		// TODO: Verificar que la estrategia de plusvaliaCero es 2
-		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
-	}
- */	
-
-/*
-	test "punto 5.1  Metahumano " {
-		// TODO: Verificar que la capacidad de batalla de fragmentadorMonopolios es 98
-		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por fragmentadorMonopolios
-		// TODO: Hacer que fragmentadorMonopolios afronte a peligroSencilloRadiactivo
-		// TODO: Verificar que la estrategia de fragmentadorMonopolios es 2
-		// TODO: Verificar que la espiritualidad de fragmentadorMonopolios es 7
-		// TODO: Verificar que peligroAlto NO puede ser afrontado por fragmentadorMonopolios
-		// TODO: Hacer que fragmentadorMonopolios afronte a peligroAlto (NO SE PUEDE!)
-	}
- */
-
-/*
-	test "punto 5.2  Mago " {
-		// TODO: Verificar que la capacidad de batalla de educadorPublico es 110
-		// TODO: Verificar que peligroAlto NO puede ser afrontado por educadorPublico
-		// TODO: Hacer que educadorPublico afronte a peligroAlto (NO SE PUEDE!)
-
-		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por educadorPublico
-		// TODO: Hacer que educadorPublico afronte a peligroSencilloRadiactivo
-		// TODO: Verificar que la estrategia de educadorPublico es 2
-		// TODO: Verificar que la espiritualidad de educadorPublico es 7
-		// TODO: Verificar que el poder acumulado de educadorPublico es 7
+		const fragmentadorMonopolios = new Metahumano(estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
+		const educadorPublico = new Mago(poderAcumulado = 12, estrategia = 1, espiritualidad = 6, poderes = #{vueloRasante})
 		
-		// TODO: Hacer que educadorPublico afronte a peligroSencilloRadiactivo
-		// TODO: Verificar que la estrategia de educadorPublico es 2
-		// TODO: Verificar que la espiritualidad de educadorPublico es 7
-		// TODO: Verificar que el poder acumulado de educadorPublico es 2
+		
+		test "punto 1.1 capacidad de batalla que aporta un poder" {
+		assert.equals(576, superVelocidadAmplificada.capBatalla(capitanaPatriaGrande))
+		assert.equals(872, vueloAlto.capBatalla(capitanaPatriaGrande))
+		assert.equals(72, altaVelocidad.capBatalla(plusvaliaCero))
+		assert.equals(144, vueloRasanteAmplificado.capBatalla(plusvaliaCero))
+		assert.equals(49, vueloRasante.capBatalla(usinaDeDerechos))
 	}
- */
+	test "punto 1.2 capacidad de batalla de un personaje" {
+		assert.equals(1448, capitanaPatriaGrande.capBatalla())
+		assert.equals(plusvaliaCero.capBatalla(),216)
+		assert.equals(usinaDeDerechos.capBatalla(), 49)
+	}
+
+	test "punto 2.1 Saber el miembro vulnerable de un equipo" {
+		assert.equals(usinaDeDerechos, cooperativaJusticiera.masVulnerable())
+	}
+	test "punto 2.2 Saber la calidad de un equipo" {
+		assert.equals(cooperativaJusticiera.calidad(), 571)
+	}
+	test "punto 2.3 Saber los mejores poderes de un equipo" {
+		assert.equals(#{vueloAlto, vueloRasanteAmplificado, vueloRasante}, cooperativaJusticiera.mejoresPoderes())
+	}	
+
+	test "punto 3.1 personajes contra el peligro" {
+		assert.that(peligroSencillo.esEnfrentablePor(capitanaPatriaGrande))
+		assert.that(peligroSencillo.esEnfrentablePor(plusvaliaCero))
+		assert.that(peligroSencillo.esEnfrentablePor(usinaDeDerechos))
+		
+		assert.that(peligroSencilloRadiactivo.esEnfrentablePor(capitanaPatriaGrande))
+		assert.that(peligroSencilloRadiactivo.esEnfrentablePor(plusvaliaCero))
+		assert.notThat(peligroSencilloRadiactivo.esEnfrentablePor(usinaDeDerechos))
+
+		assert.that(peligroModerado.esEnfrentablePor(capitanaPatriaGrande))
+		assert.that(peligroModerado.esEnfrentablePor(plusvaliaCero))
+		assert.notThat(peligroModerado.esEnfrentablePor(usinaDeDerechos))
+		
+		assert.that(peligroAlto.esEnfrentablePor(capitanaPatriaGrande))
+		assert.notThat(peligroAlto.esEnfrentablePor(plusvaliaCero))
+		assert.notThat(peligroAlto.esEnfrentablePor(usinaDeDerechos))
+	}	
+	test "punto 3.2 Saber si un peligro es sensato " {
+		assert.that(peligroSencillo.esSensato(cooperativaJusticiera))
+		assert.notThat(peligroSencilloRadiactivo.esSensato(cooperativaJusticiera))
+		assert.notThat(peligroModerado.esSensato(cooperativaJusticiera))
+		assert.notThat(peligroAlto.esSensato(cooperativaJusticiera))
+	}	
+	
+	test "punto 4.1 Afrontar peligro individualmente: OK" {
+		usinaDeDerechos.afrontarPeligro(peligroSencillo)
+		assert.equals(usinaDeDerechos.estrategia(), 2)
+	}
+	test "punto 4.1 Afrontar peligro individualmente: no OK por radioactividad" {
+		usinaDeDerechos.afrontarPeligro(peligroSencilloRadiactivo)
+		assert.equals(usinaDeDerechos.estrategia(), 1)
+	}
+	test "punto 4.1 Afrontar peligro individualmente: no OK por capacidad de batalla" {
+		usinaDeDerechos.afrontarPeligro(peligroModerado)
+		assert.equals(usinaDeDerechos.estrategia(), 1)
+	}	
+	test "punto 4.2  Afrontar peligro (moderado) en equipo  " {
+		cooperativaJusticiera.afrontarPeligro(peligroModerado)
+		assert.equals(capitanaPatriaGrande.estrategia(), 5)
+		assert.equals(plusvaliaCero.estrategia(), 4)
+		assert.equals(usinaDeDerechos.estrategia(), 1)		
+	}
+	
+	test "punto 4.2  Afrontar peligro (alto) en equipo (no ok) porque hay menos miembros de los pedidos" {
+		cooperativaJusticiera.afrontarPeligro(peligroAlto)
+		assert.equals(capitanaPatriaGrande.estrategia(), 3)
+		assert.equals(plusvaliaCero.estrategia(), 2)
+		assert.equals(usinaDeDerechos.estrategia(), 1)
+	}
+
+	test "punto 5.1  Metahumano " {
+		assert.equals(98, fragmentadorMonopolios.capBatalla())
+		assert.that(peligroSencilloRadiactivo.esEnfrentablePor(fragmentadorMonopolios))
+		
+		fragmentadorMonopolios.afrontarPeligro(peligroSencilloRadiactivo)
+		assert.equals(fragmentadorMonopolios.estrategia(), 2)
+		assert.equals(fragmentadorMonopolios.espiritualidad(), 7)
+		
+		assert.notThat(peligroAlto.esEnfrentablePor(fragmentadorMonopolios))		
+		fragmentadorMonopolios.afrontarPeligro(peligroAlto)
+	}
+	test "punto 5.2  Mago " {
+		assert.equals(110, educadorPublico.capBatalla())
+		assert.notThat(peligroAlto.esEnfrentablePor(educadorPublico))
+		
+		assert.that(peligroSencilloRadiactivo.esEnfrentablePor(educadorPublico))
+		
+		educadorPublico.afrontarPeligro(peligroSencilloRadiactivo)
+		assert.equals(educadorPublico.estrategia(), 2)
+		assert.equals(educadorPublico.espiritualidad(), 7)
+		assert.equals(educadorPublico.poderAcumulado(), 7)
+
+		educadorPublico.afrontarPeligro(peligroSencilloRadiactivo)
+		assert.equals(educadorPublico.estrategia(), 2)
+		assert.equals(educadorPublico.espiritualidad(), 7)
+		assert.equals(educadorPublico.poderAcumulado(), 2)
+	}
 }

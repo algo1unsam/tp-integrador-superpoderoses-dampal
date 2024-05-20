@@ -3,7 +3,7 @@ class Personaje{
 	var property estrategia
 	var property espiritualidad
 	var property poderes = #{}
-	method capBatalla() = poderes.map({n => n.capBatalla()}).sum()
+	method capBatalla() = poderes.fold(0, { acum, poder => acum + poder.capBatalla(self)})
 	
 	method afrontarPeligro(peligro){
 		if(peligro.esEnfrentablePor(self)){
@@ -15,13 +15,17 @@ class Personaje{
 		return poderes.any({n => n.otorgaInmunidad()})
 	}
 	
+	method mejorPoder(){
+		return poderes.max({n => n.capBatalla(self)})
+	}
+	
 }
 
 class Poder{
 	var property agilidad = 0
 	var property fuerza = 0
 	var property habEspecial = 0
-	method capBatalla() = (agilidad + fuerza) * habEspecial
+	method capBatalla(usuario) = (self.agilidad(usuario) + self.fuerza(usuario)) * self.habEspecial(usuario)
 	method otorgaInmunidad()
 }
 
@@ -63,15 +67,15 @@ class Equipo{
 	}
 	
 	method calidad(){
-		return integrantes.sum({n => n.capBatalla()})/integrantes.len()
+		return integrantes.sum({n => n.capBatalla()}).div(integrantes.size())
 	}
 	
 	method mejoresPoderes(){
-		return integrantes.map({n => n.poderes()}).foreach({n => n.max({m => m.capBatalla()})}).flatten()
+		return integrantes.map({n => n.mejorPoder()}).asSet()
 	}
 	
 	method afrontarPeligro(peligro){
-		if(integrantes.filter({n => peligro.esEnfrentablePor(n)}).len() < peligro.maxPersonajes()){
+		if(integrantes.filter({n => peligro.esEnfrentablePor(n)}).size() > peligro.maxPersonajes()){
 			integrantes.filter({n => peligro.esEnfrentablePor(n)}).forEach({n => n.afrontarPeligro(peligro)})
 		}
 	}
@@ -97,7 +101,7 @@ class Peligro{
 }
 
 class Metahumano inherits Personaje{
-	override method capBatalla() = 2 * poderes.map({n => n.capBatalla()}).sum()
+	override method capBatalla() = super() * 2
 	override method inmuneRadioactivo() = true
 	
 	override method afrontarPeligro(peligro){
@@ -111,13 +115,10 @@ class Metahumano inherits Personaje{
 
 class Mago inherits Metahumano{
 	var property poderAcumulado
-	override method capBatalla() = 2 * poderes.map({n => n.capBatalla()}).sum() + poderAcumulado
+	override method capBatalla() = super() + poderAcumulado
 	
 	override method afrontarPeligro(peligro){
-		if(peligro.esEnfrentablePor(self)){
-			estrategia += peligro.complejidad()
-			espiritualidad += peligro.complejidad()
-		}
+		if(poderAcumulado > 10){super(peligro)}
 		poderAcumulado = (poderAcumulado-5).max(0)
 	}
 }
